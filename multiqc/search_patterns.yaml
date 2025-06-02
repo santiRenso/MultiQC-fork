@@ -368,9 +368,9 @@ gatk/analyze_saturation_mutagenesis:
   fn: "*.readCounts"
   contents: ">>Reads in disjoint pairs evaluated separately:"
   num_lines: 10
-genomewide/coverage:
+genomewide_coverage:
  fn: "coverage_median_3Mb_complete.json"
-genomewide/mapq:
+genomewide_mapq:
  fn: "mapq_median_3Mb_complete.json"
 gffcompare:
   fn: "*.stats"

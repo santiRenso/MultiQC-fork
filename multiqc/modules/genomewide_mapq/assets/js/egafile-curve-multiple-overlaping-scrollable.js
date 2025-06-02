@@ -93,10 +93,7 @@ const svgContainer = document.querySelector(el).closest(".svg-container");
     const svg = body.append("svg")
     .attr("width", totalWidth)
     .attr("height", height)
-    .style("display", "block")
-    .on("pointerenter pointermove", pointermoved)
-    .on("pointerleave", pointerleft)
-    .on("touchstart", event => event.preventDefault());
+    .style("display", "block");
     svg.append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)
       .attr("class", "axis x-axis")
@@ -130,7 +127,7 @@ const svgContainer = document.querySelector(el).closest(".svg-container");
           .text(opts.yAxis);
     }
     //title
-    if(opts.title !== undefined){
+    if(opts.showTitle && opts.title !== undefined){
       d3.select(el).append("text")
           .attr("class", 'title')
           .attr("x", width/2 - 8)
@@ -169,6 +166,13 @@ const svgContainer = document.querySelector(el).closest(".svg-container");
     // Add the event listeners that show or hide the tooltip.
     const formatX = d3.format('~s')
     const bisect = d3.bisector(d => d[1]).center;
+
+    if(opts.showTooltip){
+      svg
+      .on("pointerenter pointermove", pointermoved)
+      .on("pointerleave", pointerleft)
+      .on("touchstart", event => event.preventDefault());
+    }
 
     function pointermoved(event) {
       const i = bisect(data, x.invert(d3.pointer(event)[0]));
@@ -220,6 +224,7 @@ const svgContainer = document.querySelector(el).closest(".svg-container");
         path.attr("d", `M5,${-h / 2 - 3} V-5 L0,0 L5,5 V${h / 2 + 3} H${w + 2 * paddingX} V${-h / 2 - 3} Z`);
       }
     }
+
   }
   function debounce(cb, delay = 1000) {
    let timeout;

@@ -1,5 +1,4 @@
 from multiqc.base_module import BaseMultiqcModule
-from multiqc.plots import table
 import logging
 import json
 import os
@@ -8,9 +7,9 @@ log = logging.getLogger(__name__)
 class MultiqcModule(BaseMultiqcModule):
     def __init__(self):
         super().__init__(
-            name="Genome Reference",
+            name="Median Mapping Quality Across Reference",
             anchor="genome-reference",
-            info="genome reference description"
+            info="Lorem ipsum"
         )
 
         log.info("preparing static files...")
@@ -29,34 +28,11 @@ class MultiqcModule(BaseMultiqcModule):
             )
         }
 
-        coverage_median_data = {}
         mapq_median_data = {}
-
-        # === Parse coverage_median y create section ===
-        log.info("coverage_median_3Mb_complete.json...")
-        # === Parsear archivo de cabecera BAM ===
-        for f in self.find_log_files("genomewide/coverage"):
-            log.info(f"Archivo encontrado: {f['fn']}")
-            coverage_median_data = json.dumps(f["f"])
-
-        log.info(f"Parsed mapq_median data")    
-
-        self.add_section( 
-            name="Median Coverage Across Reference",
-            anchor="median_coverage_across_reference",
-            description="Lorem ipsum",
-            content=html_import(
-                 os.path.join(
-                    os.path.dirname(__file__), "assets", "html", "coverage.html"
-                ),
-                """JSON.parse("{{ coverage_intervals }}")""",
-                f"""JSON.parse({coverage_median_data})"""
-            )
-        )
         
         # === Parse mapq_median y create section ===
         log.info("mapq_median_3Mb_complete.json...")
-        for f in self.find_log_files("genomewide/mapq"):
+        for f in self.find_log_files("genomewide_mapq"):
             log.info(f"Archivo encontrado: {f['fn']}")
             mapq_median_data = json.dumps(f["f"])
 
@@ -64,9 +40,7 @@ class MultiqcModule(BaseMultiqcModule):
 
 
         self.add_section(
-            name="Median Mapping Quality Across Reference",
             anchor="median_mapping_quality_across_reference",
-            description="Lorem ipsum",
             content=html_import(
                 os.path.join(
                     os.path.dirname(__file__), "assets", "html", "mapq.html"
