@@ -763,8 +763,6 @@ qc3C:
 qorts:
   contents: "BENCHMARK_MinutesOnSamIteration"
   num_lines: 100
-qualimap/bamqc/genome_results:
-  fn: "genome_results.txt"
 qualimap/bamqc/coverage:
   fn: "coverage_histogram.txt"
 qualimap/bamqc/insert_size:
@@ -942,6 +940,10 @@ supernova/kmers:
   fn: "histogram_kmer_count.json"
   num_lines: 10
   contents: '"description": "kmer_count",'
+tablemaker/genome:
+  fn: "genome_results.txt"
+tablemaker/header:
+  fn: "bam_header_info.txt"
 theta2:
   fn: "*.BEST.results"
 tophat:
