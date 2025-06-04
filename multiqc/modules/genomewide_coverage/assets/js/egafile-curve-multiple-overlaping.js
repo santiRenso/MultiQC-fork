@@ -33,11 +33,17 @@ window.ega_curve_mo = function (el, data, opts) {
     }    
     return arr;
   }
-  function expandScaleDomain(scale,steps_number){
-    const ticks = scale.ticks();
-    const scaleStep = ticks[1] - ticks[0]
+  function expandScaleDomain(scale,amount){
     const newDomain = scale.domain();
-    newDomain[1]+=steps_number*scaleStep;
+    if(typeof amount === 'string' && amount.endsWith("px")){
+      const amount_px = Number(amount.replace("px",""));
+      const amount_domain = scale.invert(amount_px);
+      newDomain[1]+=amount_domain;
+    }else{
+      const ticks = scale.ticks();
+      const scaleStep = ticks[1] - ticks[0];
+      newDomain[1]+=amount*scaleStep;
+    }
     scale.domain(newDomain);
   }
   function buildChart(){
