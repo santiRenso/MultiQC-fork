@@ -9,7 +9,7 @@ class MultiqcModule(BaseMultiqcModule):
         super().__init__(
             name="Median Coverage Across Reference",
             anchor="genome-reference",
-            info="This plot shows the sequencing coverage across the chromosome, summarized as the median coverage in non-overlapping 3 Mb windows. It helps identify regions with unusually high or low coverage, which may reflect technical biases, duplications, or low-complexity regions"
+            info="This plot displays sequencing coverage across chromosomes, summarized as the median coverage within non-overlapping 3 Mb windows. It helps identify regions with unusually high or low coverage, which may reflect technical biases, duplications, or low-complexity regions"
         )
 
         log.info("preparing static files...")

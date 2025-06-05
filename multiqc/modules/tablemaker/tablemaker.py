@@ -7,9 +7,8 @@ log = logging.getLogger(__name__)
 class MultiqcModule(BaseMultiqcModule):
     def __init__(self):
         super().__init__(
-            name="Summary tables",
+            name="Summary Tables",
             anchor="summary-tables",
-            info="Parse information from bam_header_info.txt and genome_results.txt."
         )
 
         sample_name = "Sample"
