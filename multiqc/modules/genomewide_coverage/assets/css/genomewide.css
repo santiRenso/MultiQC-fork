@@ -168,7 +168,6 @@
 }
 #data text.x-axis-name, #data text.y-axis-name, .chart-container text.x-axis-name, .chart-container text.y-axis-name {
   font-variant: small-caps;
-  text-transform: capitalize;
   font-size: 0.7em;
 }
 #data rect.bar, .chart-container rect.bar {
