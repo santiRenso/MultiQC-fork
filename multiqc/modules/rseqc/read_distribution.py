@@ -129,7 +129,7 @@ def parse_reports(module: BaseMultiqcModule) -> int:
             name="Read Distribution",
             anchor="rseqc-read_distribution",
             description='<a href="http://rseqc.sourceforge.net/#read-distribution-py" target="_blank">Read Distribution</a>'
-            " calculates how mapped reads are distributed over genome features.",
+            " calculates how mapped reads are distributed over genome features. In RNA-seq, typically >70% of reads map to exons, reflecting mature, properly spliced transcripts. A high proportion of intronic or intergenic reads may indicate sample quality issues, contamination, or incomplete splicing. Other sequencing strategies do not rely on these distributions for QC. For instance, WGS typically shows ~1–2% of reads in CDS exons, <1% in 5’ UTRs, ~30–40% in introns, <0.1% in TSS/TES, and ~50–60% intergenic; while WXS often has ~60–80% in CDS exons, <10% in 5’ UTRs, and generally <5% in introns, TSS/TES, or intergenic regions. Always interpret these metrics within the context of the chosen protocol and its expected outcomes.",
             plot=bargraph.plot(read_dist, keys, pconfig),
         )
     else:
@@ -137,7 +137,7 @@ def parse_reports(module: BaseMultiqcModule) -> int:
             name="Read Distribution",
             anchor="rseqc-read_distribution",
             description='<a href="http://rseqc.sourceforge.net/#read-distribution-py" target="_blank">Read Distribution</a>'
-            " calculates how mapped reads are distributed over genome features.",
+            "calculates how mapped reads are distributed over genome features. \n In RNA-seq, typically >70% of reads map to exons, reflecting mature, properly spliced transcripts. A high proportion of intronic or intergenic reads may indicate sample quality issues, contamination, or incomplete splicing. Other sequencing strategies do not rely on these distributions for QC. For instance, WGS typically shows ~1–2% of reads in CDS exons, <1% in 5’ UTRs, ~30–40% in introns, <0.1% in TSS/TES, and ~50–60% intergenic; while WXS often has ~60–80% in CDS exons, <10% in 5’ UTRs, and generally <5% in introns, TSS/TES, or intergenic regions. Always interpret these metrics within the context of the chosen protocol and its expected outcomes.",
             content='<div class="alert alert-info">All samples had zero tags.</div>',
         )
 
