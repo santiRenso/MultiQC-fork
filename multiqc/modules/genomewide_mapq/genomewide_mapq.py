@@ -9,7 +9,7 @@ class MultiqcModule(BaseMultiqcModule):
         super().__init__(
             name="Median Mapping Quality Across Reference",
             anchor="genome-reference",
-            info="This plot shows the sequencing coverage across the chromosome, calculated as the median coverage in non-overlapping 3 Mb windows. It helps identify regions with unusually high or low coverage, which may indicate biases or structural features"
+            info="This plot shows mapping quality across chromosomes, summarized as the median mapping quality within non‐overlapping 3 Mb windows. Regions with consistently low mapping quality may point to repetitive or ambiguous sequence contexts, while areas of high quality indicate confidently aligned reads"
         )
 
         log.info("preparing static files...")
